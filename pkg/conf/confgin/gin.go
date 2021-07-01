@@ -14,9 +14,7 @@ type Server struct {
 }
 
 func (s *Server) SetDefaults() {
-	if s.Address == "" {
-		s.Address = "0.0.0.0"
-	}
+
 	if s.Port == 0 {
 		s.Port = 80
 	}
