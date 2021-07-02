@@ -16,7 +16,6 @@ var (
 )
 
 func init() {
-	Server.Initial()
 
 	config := &struct {
 		Server *confgin.Server

@@ -7,8 +7,11 @@ import (
 	"path/filepath"
 	"sync"
 
+	"github.com/pkg/errors"
+
 	"github.com/sirupsen/logrus"
 	"github.com/tangx/envutils"
+
 	"gopkg.in/yaml.v3"
 )
 
@@ -19,7 +22,16 @@ type App struct {
 }
 
 func (c *App) marshal(v interface{}) ([]byte, error) {
-	return envutils.Marshal(v, c.Name)
+	err := envutils.SetDefaults(v)
+	if err != nil {
+		return nil, errors.New(fmt.Sprintf("initial config struct default values failed: %v", err))
+	}
+	b, err := envutils.Marshal(v, c.Name)
+	if err != nil {
+		return nil, errors.New(fmt.Sprintf("marshal config struct failed: %v", err))
+	}
+
+	return b, nil
 }
 
 func (c *App) writeConfigDefault(v interface{}) {
@@ -56,7 +68,6 @@ func (c *App) writeConfigDefault(v interface{}) {
 
 func (c *App) ConfP(v interface{}) {
 	c.writeConfigDefault(v)
-
 	c.setEnv()
 	c.loadEnv(v)
 }

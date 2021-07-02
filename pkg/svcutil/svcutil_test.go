@@ -11,7 +11,7 @@ func Test_ConfApp(t *testing.T) {
 		Name: "WXMP",
 	}
 	s := &confgin.Server{}
-	s.Initial()
+	s.Init()
 	config := &struct {
 		Server *confgin.Server
 	}{

@@ -19,7 +19,7 @@ func (s *Server) SetDefaults() {
 		s.Port = 80
 	}
 }
-func (s *Server) Initial() {
+func (s *Server) Init() {
 	s.SetDefaults()
 
 	if s.e == nil {
