@@ -9,7 +9,6 @@ import (
 
 	"github.com/pkg/errors"
 
-	"github.com/sirupsen/logrus"
 	"github.com/tangx/envutils"
 
 	"gopkg.in/yaml.v3"
@@ -74,7 +73,7 @@ func (c *App) ConfP(v interface{}) {
 
 // setEnv read variables from config file and write into os env
 func (c *App) setEnv() {
-	files := []string{"local.yml", "config.yml"}
+	files := []string{"default.yml", "local.yml", "config.yml"}
 
 	for _, file := range files {
 		file := filepath.Join("config", file)
@@ -90,7 +89,6 @@ func (c *App) setEnv() {
 		}
 		for k := range c {
 			os.Setenv(k, fmt.Sprint(c[k]))
-			logrus.Info(os.Getenv(k))
 		}
 	}
 
