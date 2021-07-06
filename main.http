@@ -1,0 +1,4 @@
+
+### check
+
+GET http://127.0.0.1/app/wxmp?signature=8a9cdc33ec0abf7a486cf6cf997e14bede13824b&timestamp=11625555484&nonce=431286291&openid=omSJs6aK9yAOERX4T8nghtxdICh4
