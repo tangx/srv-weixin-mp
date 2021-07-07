@@ -7,8 +7,9 @@ import (
 
 func AddRouteGroup(rg *gin.RouterGroup) {
 	r := rg.Group("/wxmp")
+	r.Use(signCheck)
 
-	r.GET("", signCheck)
+	r.GET("/ping")
 }
 
 func signCheck(c *gin.Context) {
@@ -29,7 +30,8 @@ func signCheck(c *gin.Context) {
 		return
 	}
 
-	c.JSON(200, "OK")
+	// c.JSON(200, "OK")
+	c.Next()
 
 }
 

@@ -7,7 +7,7 @@ import (
 
 func RootRouter(e *gin.Engine) {
 	r := e.Group("app")
-	// r.GET("ping")
+	r.GET("ping")
 
 	mp.AddRouteGroup(r)
 }
