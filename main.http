@@ -9,3 +9,12 @@ GET http://127.0.0.1/app/wxmp?signature=8a9cdc33ec0abf7a486cf6cf997e14bede13824b
 
 ### check failed
 GET http://127.0.0.1/app/wxmp?signature=8a9cdc33ec0abf7a486cf6cf997e14bede13824b&timestamp=a1625555484&nonce=431286291&openid=omSJs6aK9yAOERX4T8nghtxdICh4
+
+### post
+POST http://127.0.0.1/app/wxmp?signature=8a9cdc33ec0abf7a486cf6cf997e14bede13824b&timestamp=1625555484&nonce=431286291&openid=omSJs6aK9yAOERX4T8nghtxdICh4
+Content-Type: application/json
+
+{
+    "data":"123123",
+    "body":"123123"
+}
